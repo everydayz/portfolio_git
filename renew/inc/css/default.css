@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+/*font-family: 'Nanum Gothic', sans-serif;*/
+
+body {
+	width: 100%;}
+
+/*04월 16일 16:00 수정 끝*/
+a:link, a:visited {
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	text-decoration: none;
+}
+
+.hide {display: none;}
+
+.show {display: block;}
+
+.ir span { 
+    display: block;
+	font-size: 11px;
+	height: 8px;
+	text-indent: -10000px;
+	overflow: hidden;
+	z-index: -1; }
+	
+.ie7 .ir span { height: 1px;}
+	
+.clear:after { 
+    content:"";
+	height:0;
+	visibility: hidden;
+	display: block;
+	clear: both; }
+	
+	.ie6 .clear:after { height: 1%; } /* IE6 */ 
+	.ie7 .clear:after { min-height: 1px; } /* IE7 */
+	.ie8 .clear:after { min-height: 1px; } /* IE8 */
+	
+.mb_0 { margin-bottom: 0px;}
+.ie7 .mb_0 { display: block;}
+.mb_5 { margin-bottom: 5px;}
+.mb_10 { margin-bottom: 10px;}
+.mb_15 { margin-bottom: 15px;}
+.mb_20 { margin-bottom: 20px;}
+.mb_25 { margin-bottom: 25px;}
+.mb_30 { margin-bottom: 30px;}
+.mb_35 { margin-bottom: 35px;}
+.mb_40 { margin-bottom: 40px;}
+.mb_45 { margin-bottom: 45px;}
+.mb_50 { margin-bottom: 50px;}
+.mb_60 { margin-bottom: 60px;}
+.mb_70 { margin-bottom: 70px;}
+.mb_80 { margin-bottom: 80px;}
+.mb_90 { margin-bottom: 90px;}
+.mb_100 { margin-bottom: 100px;}
+
+
+.ie7 table caption { display: none;}
+
+.tac { text-align: center;}

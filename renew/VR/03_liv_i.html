@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+<!--
+/* hide from ie5 mac \*/
+html {
+	height: 100%;
+	overflow: hidden;
+}
+#flashcontent {
+	height: 100%;
+}
+/* end hide */
+#flashcontent {
+	color: #fff
+}
+#flashcontent a {
+	color: #f60;
+}
+#flashcontent a:hover {
+	color: #06f;
+}
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+	background-color: black;
+}
+-->
+</style>
+
+</head>
+<body>
+<script type="text/javascript" src="./plugin/swfobject.js">// VR 내 도움말
+</script>
+  <div id="pano">This content requires <a href="http://www.adobe.com/go/getflashplayer/">Adobe Flash Player</a> and a browser with JavaScript enabled.<br />
+	Built on <a href="http://flashpanoramas.com/player/">Flash Panorama Player</a>.</div>
+  <script type="text/javascript">
+	  var flashvars = {  
+		pano: "./xml/x03/1.xml"
+	  };
+	  
+	  var params = {  
+		allowFullScreen: "true",
+		allowScriptAccess: "sameDomain"
+	  };
+	  
+	  var attributes = {
+		xiRedirectUrl: "http://www.vrwide.com"	  
+	  };
+	  
+	  swfobject.embedSWF("./plugin/krpano.swf", "pano", "100%", "100%", "10", "./plugin/expressInstall.swf", flashvars, params, attributes);
+</script>     
+</body>
+</html>

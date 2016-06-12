@@ -1,0 +1,194 @@
+body{
+	margin: 0;
+	}
+p{
+	font-family: 돋움, 굴림;
+	font-size: 9pt;
+	color: #666666;
+	}
+img{
+	border: none;
+	}
+a:link {
+	color:#666666;
+	font-family:돋움,굴림;
+	font-size:9pt;
+	text-decoration:none;
+	}
+a:visited {
+	color:#666666;
+	font-family:돋움,굴림;
+	font-size:9pt;
+	text-decoration:none;
+	}
+a:active {
+	color:#6E4613;
+	font-family:돋움,굴림;
+	font-size:9pt;
+	text-decoration:none;
+	}
+a:hover {
+	color:#333333;
+	font-family:돋움,굴림;
+	font-size:9pt;
+	text-decoration:none;
+	}
+p{
+	font-size: 12px;
+	font-family: 돋움, 굴림;
+	color: #666666;
+	}
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	font-size: 9pt;
+	color: #666666;
+	line-height: 17px;
+	font-weight: normal;
+	overflow: hidden;
+	}
+dl,dt,dd{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	font-size: 9pt;
+	color: #666666;
+	line-height: 17px;
+	font-weight: normal;
+	overflow: hidden;
+	}
+.div_left{
+	float: left;
+	}
+.div_right{
+	float: right;
+	}
+/* 스킵네비게이션 */
+#quicklink{
+	position: absolute;
+	font-size: 0;
+	display: none;
+	}
+#quicklink li{
+	float: left; 
+	height: 0;
+	}
+#quicklink li a{
+	display: block;
+	}
+#quicklink a:hover, #quicklink a:focus, #quicklink a:active{
+	height: auto;
+	overflow: auto;
+	display: block;
+	font-size: 12px;}
+.hid{
+	visibility: hidden;
+	}
+
+/* 스킵네비게이션 끝 */
+#a_bg{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	}
+#a_contaner{
+	width: 990px;
+	text-align: left;
+	}
+#a_top{
+	width: 990px;
+	height: 98px;
+	background: url(/wixi_admn/images/top_bg.gif) no-repeat;
+	}
+.a_toplogo{
+	width: 550px;
+	height: 33px;
+	margin-left: 190px;
+	margin-top: 33px;
+	float: left;
+	}
+.a_tophome{
+	width: 79px;
+	height: 40px;
+	margin-right: 18px;
+	margin-top: 10px;
+	float: right;
+	}
+#a_body{
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 990px;
+	background: url(/wixi_admn/images/midd_bg.gif) repeat-y;
+	}
+.a_con{
+	width: 680px;
+	margin-left: 279px;
+	}
+.a_con_title{
+	width: 680px;
+	height: 24px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 25px;
+	padding-left: 10px;
+	margin-top: 37px;
+	margin-bottom: 21px;
+	border-top: 2px solid #dbdbdb;
+	border-bottom: 1px solid #dbdbdb;
+	background: #efefef;
+	}
+.a_contants{
+	width: 680px;
+	}
+.a_s_menu{
+	position: absolute;
+	top: 43px;
+	left: 56px;
+	width: 145px;
+	}
+.a_s_dt{
+	width: 145px;
+	height: 44px;
+	border-bottom: 1px solid #e3e3e3;
+	text-align: center;
+	}
+.a_s_dd{
+	width: 145px;
+	height: 28px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 25px;
+	text-align: center;
+	border-bottom: 1px solid #e3e3e3;
+	}
+.a_s_dd2{
+	width: 145px;
+	height: 56px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 56px;
+	text-align: center;
+	border-bottom: 1px solid #e3e3e3;
+	}
+#a_bottom{
+	width: 990px;
+	height: 70px;
+	background: #f6f6f6 url(/wixi_admn/images/bott_bg.gif) no-repeat;
+	}
+.bott_copy{
+	position: relative;
+	top: 30px;
+	left: 219px;
+	width: 708px;
+	height: 15px;
+	}
+
+table,tr,td,input,select,textarea {
+	font-family:"돋움,굴림"; 
+	font-size:12px;
+	color:#6c7173;
+	text-decoration:none;
+	line-height:16px;
+	}

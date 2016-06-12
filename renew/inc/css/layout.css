@@ -1,0 +1,53 @@
+@charset "utf-8";
+/*
+
+*/
+
+/* Wrap */
+#wrap {position:relative; height:100%; background:#fff;}
+
+
+
+/****************************** quick ******************************/
+#mquick ul li {left:583px; top:0px; width:67px; margin:0 auto; position:relative; z-index:99;}
+
+  #gotop{
+  left:50%;
+  margin-left:510px;
+  width:67px;
+  height:300px;
+  z-index:99;
+   }
+  #gotop ul li{
+display:block; margin-left:0px; padding:0; 
+  }
+
+  #gotop ul li.topbtn{
+display:block; width:183px; margin-left:0px; padding:10px 0 0 0px; 
+  }
+
+
+/* Header */
+#header {position:fixed; top:0; width:100%; height:90px; background:url('../../img/bg_header.jpg') repeat-x left top; text-align:center; z-index:100;}
+#header h1 {display:inline-block; padding:24px 0 0 0;}
+#header ul {display:inline-block; padding:24px 0 0 0;}
+#header ul li {float:left; display:inline-block;width:120px;font-size:18px;font-weight:bold;}
+#header ul li.menu01 {width:110px;}
+#header ul li.menu02 {width:110px;}
+#header ul li.menu03 {width:120px;}
+#header ul li.menu04 {width:150px;}
+#header ul li.menu05 {width:120px;}
+
+
+/* Global Navigation Bar */
+#gnb {position:absolute; left:50%; bottom:24px; width:1000px; margin:0 0 0 -500px;}
+#gnb .logo_hy {position:relative;float:left;top:20px;}
+#gnb .logo_su {position:relative;float:right;top:10px;}
+/*
+
+/* Footer */
+#footer {width:100%; height:200px; background:#181815;}
+#footer .footer {position:relative; width:960px; padding:40px 0 50px; margin:0 auto; color:#9d9d9d;}
+#footer .footer h1 {padding:0 0 25px;text-align:left;}
+#footer address {display:block; font-style:normal; line-height:150%;text-align:left;}
+span.font{color:#666666; font-size:11px;}

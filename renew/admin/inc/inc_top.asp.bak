@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+  <TITLE> 관리자 </TITLE>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <link rel="stylesheet" type="text/css" href="./inc/admin_style.css">
+  <link type="text/css" href="/css/ui-lightness/jquery-ui-1.8.6.custom.css" rel="stylesheet" />
+  <script type="text/javascript" src="/_lib/js/jquery-1.7.2.js"></script><noscript>메뉴가 정상적으로 보이지 않을 수 있습니다.</noscript>
+  <script type="text/javascript" src="/_lib/js/jquery.ui.core.js"></script>
+  <script type="text/javascript" src="/_lib/js/jquery.ui.widget.js"></script>
+  <script type="text/javascript" src="/_lib/js/jquery.ui.datepicker.js"></script>
+  <script type="text/javascript" src="/_lib/js/common.js"></script><noscript>메뉴가 정상적으로 보이지 않을 수 있습니다.</noscript>
+  <script type="text/javascript" src="./inc/admn.js"></script><noscript>메뉴가 정상적으로 보이지 않을 수 있습니다.</noscript>
+</HEAD>
+<BODY>
+<div id="a_bg">
+	<div id="a_contaner">
+		<div id="a_top">
+			<div class="a_toplogo" align="center"><a href="./customer_list.asp" title="관리자"><b>관리자</b></a></div>
+			<div class="a_tophome"><a href="/" target="_blank" title="사용자페이지"><img src="./images/top_home.gif" alt="사용자페이지" /></a></div>
+		</div>
+		<div id="a_body">
+			<div class="a_s_menu">
+				<dl>
+					<dt class="a_s_dt"><img src="./images/a_admin.gif" alt="admin" /></dt>
+					<dd class="a_s_dd"><a href="./customer_list.asp"><%=fncPrintSelected("01",strDepth01,"<font color=""#FE4800"">")%>관심고객<%=fncPrintSelected("01",strDepth01,"</font>")%></a></dd>
+					<dd class="a_s_dd"><a href="./notice_list.asp"><%=fncPrintSelected("02",strDepth01,"<font color=""#FE4800"">")%>보도자료<%=fncPrintSelected("02",strDepth01,"</font>")%></a></dd>
+					<dd class="a_s_dd"><a href="./hipass_join_list.asp"><%=fncPrintSelected("03",strDepth01,"<font color=""#FE4800"">")%>하이패스참여자<%=fncPrintSelected("03",strDepth01,"</font>")%></a></dd>
+					<dd class="a_s_dd"><a href="./hipass_success_list.asp"><%=fncPrintSelected("04",strDepth01,"<font color=""#FE4800"">")%>하이패스당첨자<%=fncPrintSelected("04",strDepth01,"</font>")%></a></dd>
+					<dd class="a_s_dd"><a href="./customer_mobile_list.asp"><%=fncPrintSelected("05",strDepth01,"<font color=""#FE4800"">")%>모바일 관심고객<%=fncPrintSelected("05",strDepth01,"</font>")%></a></dd>
+
+					<dd class="a_s_dd2"><a href="./logout.asp"><font color="#FE4800">로그아웃</font></a></dd>
+				</dl>
+			</div>
+			<div class="a_con">
+				<div class="a_con_title"><%=strDepthTitle%></div><!-- 타이틀 -->
+				<div class="a_contants"><!-- 컨텐츠시작 -->

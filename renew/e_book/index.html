@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ebook</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="css/import.css"  />
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<![endif]-->
+	<script>
+		//페이지크기
+		var ebookW = 970; //가로의 크기는 1024를 넘지않는다
+		var ebookH = 670;
+
+		var pageArray = new Array();
+
+		pageArray = [["images/page1_1.jpg", "images/page1_2.jpg"],
+					["images/page2_1.jpg", "images/page2_2.jpg"],
+					["images/page3_1.jpg", "images/page3_2.jpg"],
+					["images/page4_1.jpg", "images/page4_2.jpg"],
+					["images/page5_1.jpg", "images/page5_2.jpg"],
+					["images/page6_1.jpg", "images/page6_2.jpg"],
+					["images/page7_1.jpg", "images/page7_2.jpg"],
+					["images/page8_1.jpg", "images/page8_2.jpg"],
+					["images/page9_1.jpg", "images/page9_2.jpg"],
+					["images/page10_1.jpg", "images/page10_2.jpg"],
+					["images/page11_1.jpg", "images/page11_2.jpg"],
+					["images/page12_1.jpg", "images/page12_2.jpg"],
+					["images/page13_1.jpg", "images/page13_2.jpg"],
+					["images/page14_1.jpg", "images/page14_2.jpg"],
+					["images/page15_1.jpg", "images/page15_2.jpg"],
+					["images/page16_1.jpg", "images/page16_2.jpg"],
+					["images/page17_1.jpg", "images/page17_2.jpg"],
+					["images/page18_1.jpg", "images/page18_2.jpg"],
+					["images/page19_1.jpg", "images/page19_2.jpg"],
+					["images/page20_1.jpg", "images/page20_2.jpg"]];
+
+	</script>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.touchslider.js"></script>
+	<script src="js/jQuery.print.js"></script>
+	<script src="js/ui.js"></script>
+
+</head>
+<body>
+
+	<!-- 이북 : s -->
+	<!-- 이북 pc : s -->
+	<div class="ebook pc">
+		<div class="topMenu">
+			<h3 class="title"><img src="images/title.png"></h3>
+			<div class="menuCnt">
+				<div class="selectCnt">
+					<select class="select">
+						<!-- js 생성 <option>10</option> -->
+					</select>
+					페이지 / <span>4</span> 페이지
+				</div>
+				<div class="arrowBtnCnt">
+					<a href="#" class="btnPrev">이전</a>
+					<a href="#" class="btnNext">다음</a>
+				</div>
+				<ul class="utilBtnCnt">
+					<li><a href="#" class="btnZoom">돋보기</a></li>
+					<li><a href="#" class="btnPrint">프린트</a></li>
+					<li><a href="#" class="btnClose">닫기</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="ebookCnt">
+			<div class="ebookSlider">
+				<div class="touchslider-viewport">
+					<ul class="pageList"><!-- js 생성 --></ul>
+				</div>
+				<ul class="btnArrow">
+					<li class="btnPrev"><a href="#"><img src="images/btn_left.png" alt="이전"></a></li>
+					<li class="btnNext"><a href="#"><img src="images/btn_right.png" alt="다음"></a></li>
+				</ul>
+				<div class="touchslider-nav"><!-- js 생성 --></div>
+			</div>
+
+			<div class="popup none">
+				<ul class="Cnt"><!-- js 생성 --></ul>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- 이북 pc : e -->
+
+	<!-- 이북 mobile : s -->
+	<div class="ebook mobile">
+		<div class="topMenu">
+			<h3 class="title"><img src="images/title.png"></h3>
+			<div class="menuCnt">
+				<div class="selectCnt">
+					<select class="select">
+						<!-- js 생성 <option>10</option> -->
+					</select>
+					페이지 / <span>4</span> 페이지
+				</div>
+				<div class="arrowBtnCnt">
+					<a href="#" class="btnPrev">이전</a>
+					<a href="#" class="btnNext">다음</a>
+				</div>
+				<ul class="utilBtnCnt">
+					<li><a href="#" class="btnZoom">돋보기</a></li>
+					<li><a href="#" class="btnClose">닫기</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="ebookCnt">
+			<div class="ebookSlider">
+				<div class="touchslider-viewport">
+					<ul class="pageList"><!-- js 생성 --></ul>
+				</div>
+				<ul class="btnArrow">
+					<li class="btnPrev"><a href="#"><img src="images/btn_left.png" alt="이전"></a></li>
+					<li class="btnNext"><a href="#"><img src="images/btn_right.png" alt="다음"></a></li>
+				</ul>
+				<div class="touchslider-nav"><!-- js 생성 --></div>
+			</div>
+
+			<div class="popup none">
+				<ul class="Cnt"><!-- js 생성 --></ul>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- 이북 mobile : e -->
+	<!-- 이북 : e -->
+
+</body>
+</html>

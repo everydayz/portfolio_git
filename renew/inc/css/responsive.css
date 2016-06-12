@@ -1,0 +1,273 @@
+@charset "utf-8";
+/*
+  _ __  ___  _   _ _ ___   
+ | '__|/ _ \| | | | '__ \      
+ | |  |  __/| |_| | (__) |    
+ |_|   \___| \___/|  ___/  
+                  |_|         
+
+ ⓒ REUP Corp. 
+ http://www.reup.co.kr/
+*/
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (max-width : 960px) {
+	/* Layout */
+	#header {height:76px; background-size:auto 100%; background-image:url('../../img/m/bg/bg_header.png');}
+	#header h1 {padding:12px 0 0 0;}
+	#header h1 a {display:inline-block; width:55px; height:15px; background:url('../../img/m/logo_inglesina.png') no-repeat center top; background-size:100% auto; vertical-align:top;}
+	#header h1 img {display:none;}
+
+	#gnb {position:absolute; left:0; bottom:8px; width:100%; margin:0; height:23px; background:none;}
+	#gnb .gnb {margin-left:0;}
+	#gnb .gnb li {width:25%;}
+	#gnb .gnb li a {width:100%; height:22px; background-size:auto 200% !important;}
+	#gnb .gnb li:first-child a {margin-left:-1px;}
+	#gnb .nav_link {top:-38px; bottom:auto; right:0; height:23px; border-right:none;}
+	#gnb .nav_link li a {width:29px; height:23px; background-size:auto 60% !important;}
+	#gnb .nav_link li:last-child a {border-right:none;} 
+
+	#gnb .btn_home {position:absolute; top:-38px; left:10px; display:block; width:29px; height:23px; text-indent:-99999px; overflow:hidden; background:url('../../img/btn/btn_home.png') no-repeat center center; background-size:auto 60%;}
+	.ico_italy {display:none;}
+	.nav_link_tooltip {display:none;}
+
+	/* Event */
+	.event_body {padding:90px 0 50px;}
+	.event_body img {max-width:100%; height:auto;}
+	
+	/* Brand Story */
+	.section_brandstory {}
+	.section_brandstory .txt_out_story_of_love,
+	.section_brandstory .txt_since_1963 {top:150px !important;}
+	.section_brandstory .txt_out_story_of_love img,
+	.section_brandstory .txt_since_1963 img {width:80%; height:auto;}
+	
+	#brand_story_slides,#brand_story_slides .section_brandstory_bg {top:60px;}
+	#brand_story_slides,#brand_story_slides .section_brandstory_bg,#brand_story_slides .slidesjs-control {height:218px; overflow:hidden;}
+	.section_brandstory #brand_story_slides .slide1,
+	.section_brandstory #brand_story_slides .slide2,
+	.section_brandstory #brand_story_slides .slide3,
+	.section_brandstory #brand_story_slides .slide4,
+	.section_brandstory #brand_story_slides .slide5,
+	.section_brandstory #brand_story_slides .slide6,
+	.section_brandstory #brand_story_slides .slide7,
+	.section_brandstory #brand_story_slides .slide8,
+	.section_brandstory #brand_story_slides .slide9 {background-size:cover !important;}
+	.section_brandstory #brand_story_slides div {height:218px !important;}
+	.section_brandstory #brand_story_slides div img {width:100%; height:auto; display:none;}
+
+	.section_brandstory_bg,
+	.section_brandstory_bg .bg {height:218px;}
+	.section_brandstory_bg .bg.bg1,
+	.section_brandstory_bg .bg.bg2,
+	.section_brandstory_bg .bg.bg3,
+	.section_brandstory_bg .bg.bg4 {background-size:cover !important;}
+	.section_brandstory_fakebg {height:218px; top:60px;}
+
+	.section_brandstory .nav_brandstory_pc {display:none;}
+	.section_brandstory .nav_brandstory_mobile {display:block;}
+	.section_brandstory .nav_brandstory {top:305px;}
+	.section_brandstory .nav_brandstory li {margin:0 5px; width:56px; height:56px; overflow:hidden;}
+	.section_brandstory .nav_brandstory li a {display:block;}
+	.section_brandstory .nav_brandstory_mobile a {display:block; width:56px; height:56px; text-indent:-99999px; overflow:hidden;}
+	.section_brandstory .nav_brandstory_mobile a.nav1 {background:url('../../img/btn/brandstory_nav1.png') no-repeat center center; background-size:100% auto;}
+	.section_brandstory .nav_brandstory_mobile a.nav1:hover {background:url('../../img/btn/brandstory_nav1.png') no-repeat center center; background-size:100% auto;}
+	.section_brandstory .nav_brandstory_mobile a.nav2 {background:url('../../img/btn/brandstory_nav2.png') no-repeat center center; background-size:100% auto;}
+	.section_brandstory .nav_brandstory_mobile a.nav2:hover {background:url('../../img/btn/brandstory_nav2.png') no-repeat center center; background-size:100% auto;}
+	.section_brandstory .nav_brandstory_mobile a.nav3 {background:url('../../img/btn/brandstory_nav3.png') no-repeat center center; background-size:100% auto;}
+	.section_brandstory .nav_brandstory_mobile a.nav3:hover {background:url('../../img/btn/brandstory_nav3.png') no-repeat center center; background-size:100% auto;}
+	.section_brandstory .nav_brandstory_mobile a.nav4 {background:url('../../img/btn/brandstory_nav4.png') no-repeat center center; background-size:100% auto;}
+	.section_brandstory .nav_brandstory_mobile a.nav4:hover {background:url('../../img/btn/brandstory_nav4.png') no-repeat center center; background-size:100% auto;}
+	.section_brandstory .nav_brandstory .before,
+	.section_brandstory .nav_brandstory .press {margin:-28px 0 0 -28px; display:block; width:56px; height:56px; background-size:100% auto !important;}
+
+	.section_brandstory .para_area {top:385px;}
+	.section_brandstory .para1,
+	.section_brandstory .para2,
+	.section_brandstory .para3 {width:auto; margin:0 5%;}
+	.section_brandstory .para1 p {font-size:70%;}
+	.section_brandstory .para2 p {font-size:70%;}
+	.section_brandstory .para3 p {font-size:70%;}
+
+	/* Brand Concept */
+	.section_brandconcept {width:100%;}
+	.section_brandconcept .body {height:215px;}
+	.section_brandconcept .content_area {position:relative; width:100%; margin:0 auto;}
+	.section_brandconcept .content_area h1 {position:absolute; z-index:1; top:100px; left:90px;}
+	.section_brandconcept .content_area h1 img {width:200px; height:auto;}
+	.section_brandconcept .content_area .img {position:absolute; top:80px; left:15px; width:auto; height:115px;}
+	.section_brandconcept .content_area .desc {position:absolute; top:140px; left:90px; width:auto; font-size:70%; line-height:120%; margin-right:20px;}
+	.section_brandconcept .content_area .goto {position:absolute; top:360px; right:20px; z-index:5;}
+	.section_brandconcept .content_area .goto img {width:100px; height:auto;}
+
+	/* Products */
+	.section_products {background-size:200% auto;}
+	.section_products h1 {position:absolute; top:395px;}
+	.section_products h1 img {width:214px; height:auto;}
+	.section_products .nav_products {position:absolute; top:145px;}
+	.section_products .nav_products_pc {display:none;}
+	.section_products .nav_products_mobile {display:block;}
+	.section_products .nav_products li {position:relative; display:inline-block; margin:0 15px 20px; width:94px; height:94px; overflow:hidden;}
+	.section_products .nav_products .before,
+	.section_products .nav_products .press {margin:-47px 0 0 -47px; display:block; width:94px; height:94px;}
+	.section_products .nav_products a {display:block; width:94px; height:94px; text-indent:-99999px;}
+	.section_products .nav_products a.nav1 {background:url('../../img/btn/nav_products1.png') no-repeat center center; background-size:100% auto;}
+	.section_products .nav_products a.nav2 {background:url('../../img/btn/nav_products2.png') no-repeat center center; background-size:100% auto;}
+	.section_products .nav_products a.nav3 {background:url('../../img/btn/nav_products3.png') no-repeat center center; background-size:100% auto;}
+	.section_products .nav_products a.nav4 {background:url('../../img/btn/nav_products4.png') no-repeat center center; background-size:100% auto;}
+	.section_products .nav_products a.nav1:hover,
+	.section_products .nav_products a.nav1.current {background:url('../../img/btn/nav_products1_over.png') no-repeat center center; background-size:100% auto;}
+	.section_products .nav_products a.nav2:hover,
+	.section_products .nav_products a.nav2.current {background:url('../../img/btn/nav_products2_over.png') no-repeat center center; background-size:100% auto;}
+	.section_products .nav_products a.nav3:hover,
+	.section_products .nav_products a.nav3.current {background:url('../../img/btn/nav_products3_over.png') no-repeat center center; background-size:100% auto;}
+	.section_products .nav_products a.nav4:hover,
+	.section_products .nav_products a.nav4.current {background:url('../../img/btn/nav_products4_over.png') no-repeat center center; background-size:100% auto;}
+	.section_products .nav_products .nav1 {left:0;}
+	.section_products .nav_products .nav2 {left:0;}
+	.section_products .nav_products .nav3 {left:0;}
+	.section_products .nav_products .nav4 {left:0;}
+	.section_products p {position:absolute; top:150px;}
+
+	/* Products Detail */
+	.procuts_detail {height:530px !important;}
+	.procuts_detail .close {top:20px; right:auto; left:50%; margin-left:120px; width:30px; height:30px; background-size:100% auto;}
+	.procuts_detail .nav_detail {position:absolute; top:20px; left:-15px; text-align:center;}
+	.procuts_detail .nav_detail li {margin:0 3px; width:50px; height:50px;}
+	.procuts_detail .nav_detail .before,
+	.procuts_detail .nav_detail .press {margin:-25px 0 0 -25px; width:50px; height:50px;}
+	.procuts_detail .nav_detail a {width:50px; height:50px;}
+	.procuts_detail .section {height:100%;}
+	.procuts_detail .baby_stroller {display:none; /*background:url('../../img/bg/bg_products_babystroller1.jpg') no-repeat center top;*/}
+	.procuts_detail .car_seat {display:none; background:url('../../img/m/bg/bg_products_carseat.jpg') no-repeat center top; background-size:320px 530px;}
+		.procuts_detail .car_seat .btn_view1 {position:absolute; left:50%; top:185px; margin-left:-70px;}
+		.procuts_detail .car_seat .btn_view2 {position:absolute; left:50%; top:340px; margin-left:-70px;}
+		.procuts_detail .car_seat .btn_view3 {position:absolute; left:50%; top:340px; margin-left:70px;}
+	.procuts_detail .highchair {display:none; background:url('../../img/m/bg/bg_products_highchair.jpg') no-repeat center top; background-size:320px 530px;}
+		.procuts_detail .highchair .btn_view {position:absolute; left:50%; top:265px; margin-left:40px;}
+	.procuts_detail .baby_bed {display:none; background:url('../../img/m/bg/bg_products_babybed.jpg') no-repeat center top; background-size:320px 530px;}
+		.procuts_detail .baby_bed .btn_view {position:absolute; left:50%; top:210px; margin-left:40px;}
+	#slides_baby_stroller .slide1 {position:relative; background:url('../../img/m/bg/bg_products_babystroller1.jpg') no-repeat center top; background-size:320px 530px;}
+	#slides_baby_stroller .slide1 p {position:absolute; top:300px; left:50%; width:200px; margin-left:-183px; font-size:60%;}
+	#slides_baby_stroller .slide2 {position:relative; background:url('../../img/m/bg/bg_products_babystroller2.jpg') no-repeat center top; background-size:320px 530px;}
+	#slides_baby_stroller .slide3 {position:relative; background:url('../../img/m/bg/bg_products_babystroller3.jpg') no-repeat center top; background-size:320px 530px;}
+	#slides_baby_stroller .slide4 {position:relative; background:url('../../img/m/bg/bg_products_babystroller4.jpg') no-repeat center top; background-size:320px 530px;}
+	#slides_baby_stroller .slide5 {position:relative; background:url('../../img/m/bg/bg_products_babystroller5.jpg') no-repeat center top; background-size:320px 530px;}
+	#slides_baby_stroller .slide6 {position:relative; background:url('../../img/m/bg/bg_products_babystroller6.jpg') no-repeat center top; background-size:320px 530px;}
+		#slides_baby_stroller .slide1 .btn_view {position:absolute; left:50%; top:190px; margin-left:40px;}
+		#slides_baby_stroller .slide2 .btn_view {position:absolute; left:50%; top:180px; margin-left:40px;}
+		#slides_baby_stroller .slide3 .btn_view {position:absolute; left:50%; top:135px; margin-left:40px;}
+		#slides_baby_stroller .slide4 .btn_view {position:absolute; left:50%; top:145px; margin-left:55px;}
+		#slides_baby_stroller .slide5 .btn_view {position:absolute; left:50%; top:140px; margin-left:40px;}
+		#slides_baby_stroller .slide6 .btn_view {position:absolute; left:50%; top:180px; margin-left:40px;}
+	.procuts_detail .slidesjs-container,
+	.procuts_detail .slidesjs-control,
+	.procuts_detail .slidesjs-slide {width:100%; height:530px !important;}
+	.procuts_detail .slidesjs-navigation {display:block;}
+	.procuts_detail .slidesjs-previous {top:265px; width:40px; height:40px; background-size:auto 40px; margin-top:-20px;}
+	.procuts_detail .slidesjs-next {top:265px; width:40px; height:40px; background-size:auto 40px; margin-top:-20px;}
+	.procuts_detail .slidesjs-pagination {display:block; position:absolute; top:500px; right:50%; width:300px; height:10px; margin-top:0; margin-right:-150px; text-align:center;}
+	.procuts_detail .slidesjs-pagination li {display:inline-block; margin:0 5px;}
+	.procuts_detail .slidesjs-pagination a {width:10px; height:10px; background-size:auto 10px;}
+	.procuts_detail .btn_view img {width:100px; height:100px;}
+	.procuts_detail .btn_view1 img,
+	.procuts_detail .btn_view2 img,
+	.procuts_detail .btn_view3 img {width:70px; height:70px;}
+
+	.pop_prod_info_detail {display:none; position:absolute; top:0; left:0; z-index:50; width:100%; height:530px !important;}
+	.pop_prod_info_detail .content {top:0; left:0; width:100%; height:100%; margin:0; z-index:51;}
+	.pop_prod_info_detail .close {top:10px; right:10px;}
+	.pop_prod_info_detail .close img {width:30px; height:30px;}
+	.pop_prod_info_detail p.btn {top:105px; left:auto; right:25px; width:150px;}
+	.pop_prod_info_detail p.btn a {margin-left:5px;}
+	.pop_prod_info_detail p.btn img {width:64px; height:64px;}
+
+	#pop_prod1_1 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_baby_stroller_detail1.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod1_2 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_baby_stroller_detail2.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod1_3 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_baby_stroller_detail3.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod1_4 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_baby_stroller_detail4.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod1_5 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_baby_stroller_detail5.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod2_1 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_car_seat_detail3.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod2_2 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_car_seat_detail2.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod2_3 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_car_seat_detail1.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod3 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_highchair_detail.jpg') no-repeat center top; background-size:320px 530px;}
+	#pop_prod4 .content {width:320px; height:530px; left:50%; margin:0 0 0 -160px; background:url('../../img/m/img_baby_bed_detail.jpg') no-repeat center top; background-size:320px 530px;}
+
+	/* section_cscenter */
+	.section_cscenter {}
+	.section_cscenter .content_area {width:auto; margin:0 20px;}
+	.section_cscenter h1 {position:relative; top:0; padding:100px 0 10px 0; text-align:center;}
+	.section_cscenter h1 img {width:90%; height:auto;}
+	.section_cscenter .h1_desc {position:relative; top:0; padding-bottom:15px; font-size:70%; margin:0 10px; color:#9d9d9d; line-height:130%; text-align:center;}
+	.section_cscenter .tel {position:relative; top:0; padding-bottom:15px; text-align:center;}
+	.section_cscenter .tel img {width:45%; height:auto;}
+	.section_cscenter h2 {background:url('../../img/bg/bg_line.gif') repeat-x left center; text-align:center; font-size:80%;}
+	.section_cscenter h2 span {display:inline-block; padding:0 10px; color:#fff; background:url('../../img/bg/bg_body.gif') repeat left top; font-weight:normal; font-size:100%;}
+	.section_cscenter .nav_cs {width:100%; padding:25px 0 30px; text-align:center;}
+	.section_cscenter .nav_cs li {position:relative; display:inline-block; margin:0 8px; width:74px; height:74px; overflow:hidden;}
+	.section_cscenter .nav_cs .before,
+	.section_cscenter .nav_cs .press {position:absolute; top:50%; left:50%; margin:-37px 0 0 -37px; display:block; width:74px; height:74px; text-indent:-99999px; overflow:hidden;}
+	.section_cscenter .nav_cs_pc {display:none;}
+	.section_cscenter .nav_cs_mobile {display:block;}
+	.section_cscenter .nav_cs_mobile a {display:block; width:74px; height:74px; text-indent:-99999px; overflow:hidden;}
+	.section_cscenter .nav_cs_mobile a.nav1 {background:url('../../img/btn/nav_cs1.png') no-repeat center center; background-size:cover;}
+	.section_cscenter .nav_cs_mobile a.nav2 {background:url('../../img/btn/nav_cs2.png') no-repeat center center; background-size:cover;}
+	.section_cscenter .nav_cs_mobile a.nav3 {background:url('../../img/btn/nav_cs3.png') no-repeat center center; background-size:cover;}
+	.section_cscenter .nav_cs_mobile a.nav4 {background:url('../../img/btn/nav_cs4.png') no-repeat center center; background-size:cover;}
+	.section_cscenter .prod_guide {overflow:hidden; padding-left:0; padding-top:15px; margin:0 auto;}
+	.section_cscenter .prod_guide .col {float:left; width:45%; margin:0 2.5%; min-height:175px; padding-bottom:0;}
+	.section_cscenter .prod_guide .col_bottom {min-height:45px;}
+	.section_cscenter .prod_guide h3 {font-size:90%; color:#d8aa3d; margin-bottom:10px; height:30px; line-height:30px; text-indent:10px; border-bottom:2px solid #fff;}
+	.section_cscenter .prod_guide ul a {font-size:70%; color:#9d9d9d; height:20px; line-height:20px; padding-left:15px; background-size:auto 10px;}
+	.section_cscenter .prod_guide ul a:hover {color:#ff4200;}
+	.section_cscenter .genuine_pc {display:none;}
+	.section_cscenter .genuine_mobile {display:block;}
+	.section_cscenter .genuine_mobile .regist_desc1 {padding:0 0 25px; font-size:70%; line-height:130%;}
+	.section_cscenter .genuine_mobile .regist_desc2 {padding:10px 0 5px; font-size:80%;}
+	.section_cscenter .genuine_mobile .btn_regist {text-align:center; padding-bottom:35px;}
+	.section_cscenter .genuine_mobile .btn_regist img {width:270px; height:auto;}
+	.section_cscenter .as_guide {margin:0;}
+	.section_cscenter .as_guide li {padding:15px 0 15px 60px; min-height:50px;}
+	.section_cscenter .as_guide li h3 {font-size:90%;}
+	.section_cscenter .as_guide li .desc {font-size:70%;}
+	.section_cscenter .as_guide li .desc2 {font-size:70%;}
+	.section_cscenter .as_guide li .mb {margin-bottom:10px;}
+	.section_cscenter .as_guide li.as1,
+	.section_cscenter .as_guide li.as2,
+	.section_cscenter .as_guide li.as3,
+	.section_cscenter .as_guide li.as4,
+	.section_cscenter .as_guide li.as5,
+	.section_cscenter .as_guide li.as6 {background-size:auto 48px; background-position:left 15px;}
+
+	/* Popup Safety */
+	.pop_safety {width:100%;}
+	.pop_safety .nyroModalClose {position:absolute; top:10px; right:10px; width:30px; height:30px; text-indent:-9999em; background-size:100% auto;}
+	.pop_safety h1 {padding:20px 0 15px; font-size:120%; color:#000;}
+	.pop_safety img {width:100% !important; max-width:100% !important; height:auto;}
+
+	/* Footer */
+	#footer {height:135px;}
+	#footer .footer {width:auto; padding:18px 0 0; margin:0 20px; color:#9d9d9d;}
+	#footer .footer h1 {padding:0 0 5px;}
+	#footer .footer h1 img {width:56px; height:auto;}
+	#footer .footer .italy {position:absolute; top:15px; left:80px; padding-left:17px; height:18px; line-height:18px; font-size:70%; background-size:auto 6px;}
+	#footer address {display:block; font-style:normal; line-height:150%; font-size:70%;}
+	#footer .btn_top {position:absolute; top:14px; right:0;}
+	#footer .btn_top img {width:24px; height:auto;}
+	#brand_story {height:650px !important;}
+	#brand_concept {height:650px !important;}
+	#products {height:650px !important;}
+	#cs_center {height:1550px !important;}
+	#footer {height:135px !important;}
+}
+
+
+@media only screen 
+and (min-width : 960px) {
+	#brand_story {height:1080px !important;}
+	#brand_concept {height:1080px !important;}
+	#products {height:1080px !important;}
+	#cs_center {height:2465px !important;}
+	#footer {height:200px !important;}
+}

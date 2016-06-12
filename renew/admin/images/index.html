@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+<title>포트폴리오</title>
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]--><script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	$('.main_visual').flexslider({
+		animation: "slide",
+		slideshowSpeed: 5000,
+		directionNav: false,
+		pauseOnAction: false,
+		start: function(slider) {
+			$('.slides').show();
+			$('.sum_visual').show();
+		}
+	});
+});
+</script>
+</head>
+<body>
+<div id="wrap">
+	
+	<!-- header start -->
+	<div id="header">
+		<h1><a href="index.html">김민선 드~자이너 포트폴리오</a></h1>
+		<!--
+		<ul>
+			<li class="m1"><a href="#"><img src="../images/m_menu01.jpg" alt="m_menu01" /></a></li>
+			<li class="m2"><a href="#"><img src="../images/m_menu02.jpg" alt="m_menu02" /></a></li>
+			<li class="m3"><a href="#"><img src="../images/m_menu03.jpg" alt="m_menu03" /></a></li>
+			<li class="m4"><a href="#"><img src="../images/m_menu04.jpg" alt="m_menu04" /></a></li>
+			<li class="m5"><a href="#"><img src="../images/m_menu05.jpg" alt="m_menu05" /></a></li>
+		</ul>
+		<p class="dropdown_btn"><img src="../images/icon_menu_1.gif" /></p>
+		-->
+	</div>
+	<!--
+	<div class="dropdown_menu">
+		<ul>
+			<li><a href="../pages/lobe.html">LOBE E&M</a></li>
+			<li><a href="../pages/artist.html">ARTIST</a></li>
+			<li><a href="../pages/marketing.html">MARKETING</a></li>
+			<li><a href="../pages/audition.html">AUDITION</a></li>
+			<li><a href="../pages/news.html">PRESS</a></li>
+		</ul>
+	</div>	
+	-->
+	<!-- header end -->
+	
+	<!-- container start -->
+	<div id="container">
+		<div class="main_visual" data-touch="true">
+			<ul class="slides">
+				<li><img src="img/main_visual_01.jpg" alt="" /></li>
+				<li><img src="img/main_visual_02.jpg" alt="" /></li>
+				<li><img src="img/main_visual_03.jpg" alt="" /></li>
+				<li><img src="img/main_visual_04.jpg" alt="" /></li>
+				<li><img src="img/main_visual_05.jpg" alt="" /></li>
+				<li><img src="img/main_visual_06.jpg" alt="" /></li>
+			</ul>
+			<div class="mv_pattern"></div>
+		</div>
+		<div class="sum_visual">
+			<ul>
+				<li id="sum_area1">
+					<img src="img/sumimg01.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">한양<br />수자인</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area1', 'on')" onmouseout="sum_effect('sum_area1', 'off')" onclick="location.href='sub/index.html'"></p>
+				</li>
+				<li id="sum_area2">
+					<img src="img/sumimg02.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">우방건설<br />고촌아이유셀</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area2', 'on')" onmouseout="sum_effect('sum_area2', 'off')" onclick="location.href='sub/view_02.html'"></p>
+				</li>
+				<li id="sum_area3">
+					<img src="img/sumimg03.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">GS건설<br />앰배서더</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area3', 'on')" onmouseout="sum_effect('sum_area3', 'off')" onclick="location.href='sub/view_03.html'"></p>
+				</li>
+				<li id="sum_area4">
+					<img src="img/sumimg04.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">MF<br />Company</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area4', 'on')" onmouseout="sum_effect('sum_area4', 'off')" onclick="location.href='sub/view_04.html'"></p>
+				</li>
+				<li id="sum_area5">
+					<img src="img/sumimg05.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">이벤트</br>etc</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area5', 'on')" onmouseout="sum_effect('sum_area5', 'off')" onclick="location.href='sub/view_05.html'"></p>
+				</li>
+				<li id="sum_area6">
+					<img src="img/sumimg06.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">아이눈<br />커뮤니케이션</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area6', 'on')" onmouseout="sum_effect('sum_area6', 'off')" onclick="location.href='sub/view_06.html'"></p>
+				</li>
+				<li id="sum_area7">
+					<img src="img/sumimg07.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">NECA<br />신개발의료기술</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area7', 'on')" onmouseout="sum_effect('sum_area7', 'off')" onclick="location.href='sub/view_07.html'"></p>
+				</li>
+				<li id="sum_area8">
+					<img src="img/sumimg08.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">스텔라<br />쥬얼리사이트</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area8', 'on')" onmouseout="sum_effect('sum_area8', 'off')" onclick="location.href='sub/view_08.html'"></p>
+				</li>
+				<li id="sum_area9">
+					<img src="img/sumimg09.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">초록우산<br />어린이재단</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area9', 'on')" onmouseout="sum_effect('sum_area9', 'off')" onclick="location.href='sub/view_09.html'"></p>
+				</li>
+				<li id="sum_area10">
+					<img src="img/sumimg10.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">한국<br />관광공사</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area10', 'on')" onmouseout="sum_effect('sum_area10', 'off')" onclick="location.href='sub/view_10.html'"></p>
+				</li>
+				<li id="sum_area11">
+					<img src="img/sumimg11.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">도봉구<br />웹사이트개편</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area11', 'on')" onmouseout="sum_effect('sum_area11', 'off')" onclick="location.href='sub/view_11.html'"></p>
+				</li>
+				<li id="sum_area12">
+					<img src="img/sumimg12.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">스타벅스<br />프로모션</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area12', 'on')" onmouseout="sum_effect('sum_area12', 'off')" onclick="location.href='sub/view_12.html'"></p>
+				</li>
+				<li id="sum_area13">
+					<img src="img/sumimg13.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">웹사이트<br />시안</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area13', 'on')" onmouseout="sum_effect('sum_area13', 'off')" onclick="location.href='sub/view_13.html'"></p>
+				</li>
+				<li id="sum_area14">
+					<img src="img/sumimg14.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">EBS<br />초목달</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area14', 'on')" onmouseout="sum_effect('sum_area14', 'off')" onclick="location.href='sub/view_14.html'"></p>
+				</li>
+				<li id="sum_area15">
+					<img src="img/sumimg15.jpg" />
+					<p class="sum_over"><img src="img/sum_over.png" /></p>
+					<p class="sum_text">소스팜<br />웹사이트</p>
+					<p class="sum_effecter" onmouseover="sum_effect('sum_area15', 'on')" onmouseout="sum_effect('sum_area15', 'off')" onclick="location.href='sub/view_15.html'"></p>
+				</li>
+			</ul>
+		</div>
+		<!--
+		<div class="location">
+			<div class="location_address">
+				<p class="location_title"><img src="../images/location_title.jpg" /></p>
+				<p class="location_address_text1">12F Inhwa Bldg., 142-2,<br />Samseong-dong, Gangnam-gu, Seoul, Korea</p>
+				<p class="location_address_text2">서울시 강남구 삼성동 142-2 인화빌딩 12층</p>
+				<p class="location_address_text3">tel  .082 . 2 . 558 . 7454<br />fax .082 . 2 . 558 . 7707</p>
+			</div>
+			<div class="location_map">
+				<img src="../images/location_map.jpg" />
+			</div>
+		</div>
+		-->
+	</div>
+	<!-- container end -->
+	
+	<!-- footer start -->
+	<div id="footer">
+	<!--
+	<div class="footer_logo">
+		<div class="logo_view">
+			김민선 드~자이너 포트폴리오
+		</div>
+	</div>
+	-->
+	<div class="footer_info">
+		<div class="footer_copy">@ 2014 Kim min sun. E-mail:vavi98@naver.com. </div>
+		<ul>
+			<li><label for="hp">H.P</label>:010-9417-7594.</li>
+		</ul>
+	</div>
+</div>	<!-- footer end -->
+	
+</div>
+</body>
+</html>

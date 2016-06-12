@@ -1,0 +1,1826 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, user-scalable=yes, target-densityDpi=medium-dpi" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="/dev_common/css/reset.css" />
+	<style type="text/css">
+		/* reset css */
+		* {-webkit-text-size-adjust:none}
+		html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video,button{margin:0;padding:0;border:0;outline:0;font-size:1em;vertical-align:baseline;background:transparent;}
+		body{font-size:13px;padding:2em;line-height:1.7;font-family:AppleGothic, "나눔고딕", NanumGothic, "맑은 고딕", MalgunGothic,dotum,"돋움",gulim,"굴림"}
+		article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+		ul{list-style:none}
+		ol{list-style:decimal inside}
+		blockquote,q {quotes: none}
+		pre{display:inline-block}
+		blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+		a{margin:0;padding:0;vertical-align:baseline;background:transparent}
+		table{border-collapse:collapse;border-spacing:0;table-layout:fixed}
+		table caption{padding:.5em 0;text-align:left;font-weight:700;font-size:1em;line-height:1.3;vertical-align:middle}
+		input,select{margin:0;padding:0;vertical-align:middle}
+		button{cursor:pointer}
+		sub{font-size:smaller}
+		h1{font-size:1.45em}
+		h2{font-size:1.3em}
+		h3{font-size:1.2em}
+		dd{padding-left:3em}
+		th,td{vertical-align:middle;word-break:break-all}
+
+
+		/* COMMON */
+		.hidden{position:absolute;top:-99999em;left:-99999em}
+		.secTtl:before{content:"◆ "}
+
+		/* Project Information Table  */
+		.projctInfo{width:100%;margin:0 0 3em;border:1px solid #888}
+		.projctInfo caption{font-weight:400}
+		.projctInfo col.header{width:180px}
+		.projctInfo th, .projctInfo td{border:1px dashed #AAA;padding:.25em 1em;text-align:left}
+		.projctInfo th{background-color:#DEDEDE;border-right:0}
+		.projctInfo td{border-left:0}
+
+		/* Scheduler Table */
+		.scheduler{margin:0 0 3em;width:100%}
+		.scheduler caption{text-align:right}
+		.calendar{width:14%}
+		.calendar:first-child{width:16%}
+		.scheduler thead th{background-color:#AAA;border:1px solid #AAA;padding:5px;text-align:center}
+		.scheduler tbody td{border:1px solid #AAA;padding:5px;text-align:center;text-align:left}
+		.scheduler tbody td:first-child, .scheduler tbody td.holyday{background-color:#fed8d8;}
+		.scheduler tbody td.non-work{background:#6b6a6a}
+		.scheduler tbody td div.memo{padding:0 5px;min-height:50px}
+		.scheduler tbody td div.memo ul{list-style-position:inside}
+		.scheduler tbody td div.memo ul li{padding-left:1em}
+		.scheduler tbody td div.memo ul li:before{margin-left:-1em;content:"□ "}
+		.scheduler tbody td div.memo ul li.checked:before{margin-left:-1em;content:"■ "}		
+		.scheduler tbody td div.memo ul li.during:before{margin-left:-1em;content:"■ ";color:#777}
+
+		/* Output Files Table */
+		.outputList{width:100%;margin:0 0 3em;border:1px solid #888}
+		.outputList caption{text-align:right}
+		.outputList th, .outputList td{border:1px solid #AAA;padding:.25em .5em}
+		.outputList th{background-color:#C0C0C0;border-bottom-width:3px}
+		.outputList td{background-color:#FFF;vertical-align:middle}
+		.outputList .complete td {background-color:#ECECEC}
+		.outputList .during td {background-color:#dafeb4}
+		.outputList .deleted td{background-color:#fe6565;text-decoration:line-through}
+		.outputList .complete td:nth-last-child(6),
+		.outputList .during td:nth-last-child(6),
+		.outputList .deleted td:nth-last-child(6){background-color:#fff;text-decoration:none}
+
+		/* Developed Script List */
+		.devScriptList{margin:0 0 3em;width:100%}
+		.devScriptList caption{text-align:right}
+		.devScriptList th, .devScriptList td{border:1px solid #AAA;padding:.25em .5em}
+		.devScriptList th{background-color:#C0C0C0;border-bottom-width:3px}
+		.devScriptList td{background-color:#FFF;vertical-align:middle}
+		.devScriptList .complete td {background-color:#ECECEC}
+		.devScriptList .during td {background-color:#dafeb4}
+		.devScriptList .deleted td{background-color:#fe6565;text-decoration:line-through}
+		.devScriptList .complete td:nth-last-child(4),
+		.devScriptList .during td:nth-last-child(4),
+		.devScriptList .deleted td:nth-last-child(4){background-color:#fff;text-decoration:none}
+
+		@media all and (max-width: 479px){
+			body{padding:1em;width:auto}
+			.auther{text-align:right}
+
+			/* Project Information Table  */
+			.projctInfo{display:block;border:0;border-top:1px solid #AAA;}
+			.projctInfo caption{position:absolute;top:-99999em;left:-99999em;}
+			.projctInfo col.header{width:auto}
+			.projctInfo tbody, .projctInfo tbody tr{display:block}
+			.projctInfo th, .projctInfo td{display:block;border:1px solid #AAA;border-top:0}
+			.projctInfo td{padding-left:2em}
+		}
+		@media all and (max-width: 959px){
+			body{padding:1em;}
+			/* Scheduler Table */
+			.scheduler{display:block;border-bottom:1px solid #AAA}
+			.scheduler caption{display:block}
+			.scheduler thead{position:absolute;top:-99990em;left:-99999em}
+			.scheduler thead tr, .scheduler thead th{display:block;}
+			.scheduler tbody td.non-work{display:none}
+			.scheduler tbody, .scheduler tbody tr, .scheduler tbody td{display:block;}
+			.scheduler tbody td{border-bottom:0}
+			.scheduler td:nth-child(1) span.date:after{content:" (일)"}
+			.scheduler td:nth-child(2) span.date:after{content:" (월)"}
+			.scheduler td:nth-child(3) span.date:after{content:" (화)"}
+			.scheduler td:nth-child(4) span.date:after{content:" (수)"}
+			.scheduler td:nth-child(5) span.date:after{content:" (목)"}
+			.scheduler td:nth-child(6) span.date:after{content:" (금)"}
+			.scheduler td:nth-child(7) span.date:after{content:" (토)"}
+
+			/* Output Files Table */
+			.outputList{display:block;border:0;border-bottom:1px solid #AAA}
+			.outputList caption{display:block}
+			.outputList thead{position:absolute;top:-9999em;left:-9999em}
+			.outputList tbody, .outputList tbody tr, .outputList tbody th, .outputList tbody td{display:block}
+			.outputList tbody th, .outputList tbody td{border:1px solid #AAA;border-bottom:0}
+			.outputList tbody td:nth-last-child(6),
+			.outputList .complete td:nth-last-child(6),
+			.outputList .during td:nth-last-child(6),
+			.outputList .deleted td:nth-last-child(6){font-weight:600;background-color:#CCC;text-decoration:none}
+			.outputList tbody td.type:before{content:"type : "}
+			.outputList tbody td:nth-last-child(5){padding-left:1.5em}
+			.outputList tbody td:nth-last-child(5):before{content:"》 ";margin-left:-.5em}
+			.outputList tbody td:nth-last-child(4){padding-left:3em;border-top:1px dashed #AAA}
+			.outputList tbody td:nth-last-child(4):before{content:"〉 ";margin-left:-1.5em}
+			.outputList tbody td:nth-last-child(5):empty, .outputList tbody td:nth-last-child(4):empty{display:none}
+			/* 3Depth Filled */
+			.outputList tbody td:nth-last-child(1),
+			.outputList tbody td:nth-last-child(2),
+			.outputList tbody td:nth-last-child(3){padding-left:4.5em;border-top:0}
+			.outputList tbody td:nth-last-child(1):before{content:"· Memo : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			.outputList tbody td:nth-last-child(2):before{content:"· FileName : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			.outputList tbody td:nth-last-child(3):before{content:"· Directory : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			/* 2Depth Filled */
+			.outputList tbody td:nth-last-child(4) ~ td{padding-left:3em;}
+
+			/* Developed Script List */
+			.devScriptList{display:block;border:0;border-bottom:1px solid #AAA}
+			.devScriptList caption{display:block}
+			.devScriptList thead{position:absolute;top:-9999em;left:-9999em}
+			.devScriptList tbody, .devScriptList tbody tr, .devScriptList tbody th, .devScriptList tbody td{display:block}
+			.devScriptList tbody th, .devScriptList tbody td{border:1px solid #AAA;border-bottom:0}
+			.devScriptList tbody td:nth-last-child(4),
+			.devScriptList .complete td:nth-last-child(4),
+			.devScriptList .during td:nth-last-child(4),
+			.devScriptList .deleted td:nth-last-child(4){font-weight:600;background-color:#CCC;text-decoration:none}
+			.devScriptList tbody td:nth-last-child(1),
+			.devScriptList tbody td:nth-last-child(2),
+			.devScriptList tbody td:nth-last-child(3){padding-left:3em;border-top:0}
+			.devScriptList tbody td:nth-last-child(3){border-top: 1px dashed #AAA}
+			.devScriptList tbody td:nth-last-child(4) + td{border-top:0}
+			.devScriptList tbody td:nth-last-child(1):before{content:"· Memo : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			.devScriptList tbody td:nth-last-child(2):before{content:"· 파일위치 : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			.devScriptList tbody td:nth-last-child(3):before{content:"· 기능 : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+		}
+	</style>
+	<!--[if IE 9]>
+	<style type="text/css">
+		@media all and (max-width: 479px){
+			/* Project Information Table  */
+			.projctInfo tbody, .projctInfo tbody tr{display:block}
+			.projctInfo th, .projctInfo td{float:left}
+			.projctInfo th{padding-left:2%;padding-right:2%;width:96%}
+			.projctInfo td{padding-left:4%;padding-right:2%;width:94%}
+		}
+		@media all and (max-width: 959px){
+			.scheduler tbody td{float:left;padding-left:2%;padding-right:2%;width:96%}
+
+			.outputList th, .outputList td{float:left;padding-left:2%;padding-right:2%;width:96%}
+
+			.outputList tbody td:nth-last-child(6),
+			.outputList .complete td:nth-last-child(6),
+			.outputList .during td:nth-last-child(6),
+			.outputList .deleted td:nth-last-child(6){font-weight:600;background-color:#CCC;text-decoration:none}
+			.outputList tbody td.type:before{content:"type : "}
+			.outputList tbody td:nth-last-child(5){padding-left:3%;width:95%}
+			.outputList tbody td:nth-last-child(5):before{content:"》 ";margin-left:-.5em}
+			.outputList tbody td:nth-last-child(4){padding-left:6%;border-top:1px dashed #AAA;width:92%;}
+			.outputList tbody td:nth-last-child(4):before{content:"〉 ";margin-left:-1.5em}
+			.outputList tbody td:nth-last-child(5):empty, .outputList tbody td:nth-last-child(4):empty{display:none}
+			/* 3Depth Filled */
+			.outputList tbody td:nth-last-child(1),
+			.outputList tbody td:nth-last-child(2),
+			.outputList tbody td:nth-last-child(3){padding-left:8%;width:90%;}
+			.outputList tbody td:nth-last-child(1):before{content:"· Memo : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			.outputList tbody td:nth-last-child(2):before{content:"· FileName : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			.outputList tbody td:nth-last-child(3):before{content:"· Directory : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			/* 2Depth Filled */
+			.outputList tbody td:nth-last-child(4) ~ td{padding-left:6%;width:92%}
+
+			.devScriptList th, .devScriptList td{float:left;padding-left:2%;padding-right:2%;width:96%}
+			.devScriptList tbody td:nth-last-child(1),
+			.devScriptList tbody td:nth-last-child(2),
+			.devScriptList tbody td:nth-last-child(3){padding-left:6%;width:92%;border-top:0}
+			.devScriptList tbody td:nth-last-child(3){border-top: 1px dashed #AAA}
+			.devScriptList tbody td:nth-last-child(4) + td{border-top:0}
+			.devScriptList tbody td:nth-last-child(1):before{content:"· Memo : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			.devScriptList tbody td:nth-last-child(2):before{content:"· 파일위치 : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+			.devScriptList tbody td:nth-last-child(3):before{content:"· 기능 : ";margin-left:-1.5em;display:block;font-weight:600;color:#777}
+		}
+	</style>
+	<![endif]-->
+	<title></title>
+</head>
+<body>
+	<h1>Publishing Output Guide Document</h1>
+	<div class="auther">
+		<h2 class="hidden">문서 정보</h2>
+		Written : 2015-9-10, 작성자 : 김자영
+	</div>
+	<!-- Project Summary : START -->
+	<h2 class="hidden">프로젝트 정보</h2>
+	<table class="projctInfo">
+		<caption><span class="hidden">프로젝트 기본 정보</span></caption>
+		<colgroup>
+			<col class="header" />
+			<col />
+		</colgroup>
+		<tbody>
+			<tr>
+				<th scope="row">1. 프로젝트명</th>
+				<td>가연 결혼정보 홈페이지 리뉴얼</td>
+			</tr>
+			<tr>
+				<th scope="row">2. 인코딩 방식</th>
+				<td>euc-kr</td>
+			</tr>
+			<tr>
+				<th scope="row">3. DTD 사용</th>
+				<td>HTML5</td>
+			</tr>
+			<tr>
+				<th scope="row">4. 크로스 브라우징 종류</th>
+				<td>IE8, IE9, IE10, IE11, Firefox , Chrome</td>
+			</tr>
+			<tr>
+				<th scope="row">5. 웹 접근성 적용 여부</th>
+				<td>X</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- Project Summary : END -->
+
+	<h2 class="secTtl">작업 일정 예정표</h2>
+	<table class="scheduler">
+		<caption>
+			<span class="hidden">작업 일정표 캘린더</span>
+			<span>□ 미작업 <span style="color:#777;">■</span> 작업 중 ■ 작업 완료</span>
+		</caption>
+		<colgroup>
+			<col class="calendar" />
+			<col class="calendar" />
+			<col class="calendar" />
+			<col class="calendar" />
+			<col class="calendar" />
+			<col class="calendar" />
+			<col class="calendar" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">SUN</th>
+				<th scope="col">MON</th>
+				<th scope="col">TUE</th>
+				<th scope="col">WED</th>
+				<th scope="col">THU</th>
+				<th scope="col">FRI</th>
+				<th scope="col">SAT</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="non-work">
+					<span class="date">8/30</span>
+					<div class="memo">
+						
+					</div>
+				</td>
+				<td class="non-work">
+					<span class="date">8/31</span>
+					<div class="memo"></div>
+				</td>
+				<td class="non-work">
+					<span class="date">9/1</span>
+					<div class="memo"></div>
+				</td>
+				<td>
+					<span class="date">9/2</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">개발 서버 셋팅</li>
+							<li class="checked">Directory 구조 Guide Build-up</li>
+							<li class="checked">공통 CSS Guide Bulid-up</li>
+							<li class="checked">MAIN PAGE 퍼블리싱</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/3</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">공통 CSS Guide Bulid-up</li>
+							<li class="checked">MAIN PAGE - 레이아웃 퍼블리싱</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/4</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">MAIN PAGE -  헤더 및 비쥬얼 퍼블리싱</li>
+							<li class="checked">메인 페이지 웹표준/크로스 브라우징 검수</li>
+						</ul>
+					</div>
+				</td>
+				<td class="non-work">
+					<span class="date">9/5</span>
+					<div class="memo">
+						
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="non-work">
+					<span class="date">9/6</span>
+					<div class="memo">
+						
+					</div>
+				</td>
+				<td>
+					<span class="date">9/7</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">MAIN PAGE - 컨텐츠 퍼블리싱</li>
+							<li class="checked">메인 페이지 웹표준/크로스 브라우징 검수</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/8</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">MAIN PAGE -푸터 및 퀵메뉴 퍼블리싱</li>
+							<li class="checked">메인 페이지 웹표준/크로스 브라우징 검수</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/9</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">MAIN PAGE -레이어팝업 퍼블리싱</li>
+							<li class="checked">메인 페이지 웹표준/크로스 브라우징 검수</li>
+							<li class="checked">UI Script 개발</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/10</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">MAIN PAGE 퍼블리싱</li>
+							<li class="checked">인클루드 작업 및 문서작성</li>
+							<li class="checked">UI Script 개발</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/11</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">SUB PAGE - 레이아웃 퍼블리싱</li>
+							<li class="checked">SUB PAGE - 가연스토리, 가연소식</li>
+							<li class="checked">인클루드 작업</li>
+							<li class="checked">메인 - 무료체험 레이어팝업</li>
+						</ul>
+					</div>
+				</td>
+				<td class="non-work">
+					<span class="date">9/12</span>
+					<div class="memo">
+						
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="non-work">
+					<span class="date">9/13</span>
+					<div class="memo">
+						
+					</div>
+				</td>
+				<td>
+					<span class="date">9/14</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">메인 개발요청</li>
+							<li class="checked">SUB PAGE - 가입안내, 회원검색</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/15</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">SUB PAGE - 러브테스트, 러브가이드</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/16</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">SUB PAGE - 이벤트, 마이가연</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/17</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">SUB PAGE - etc, 제휴페이지</li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<span class="date">9/18</span>
+					<div class="memo">
+						<ul>
+							<li class="checked">SUB PAGE - 랜딩페이지</li>
+						</ul>
+					</div>
+				</td>
+				<td class="non-work">
+					<span class="date">9/19</span>
+					<div class="memo"></div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- CSS, JavaScript Resources List : START -->
+	<h2 class="secTtl">CSS, JavaScript Resources</h2>
+	<table class="outputList">
+		<caption >
+			<span class="hidden">resources information list</span>
+		</caption>
+		<colgroup>
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="*" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">type</th>
+				<th scope="col">1 Depth</th>
+				<th scope="col">2 Depth</th>
+				<th scope="col">Directory</th>
+				<th scope="col">FileName</th>
+				<th scope="col">Memo</th>			
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="type" rowspan="3">CSS</td>
+				<td>공통 CSS</td>
+				<td></td>
+				<td>/css </td>
+				<td><a href="http://www.gayeon.com/css/common.css" target="_blank">common.css</a> </td>
+				<td> RESET CSS - for CrossBrowsing, 공통 CSS </td>
+			</tr>
+			<tr>
+				<td>Main CSS</td>
+				<td></td>
+				<td>/css </td>
+				<td><a href="http://www.gayeon.com/css/main.css" target="_blank">main.css</a> </td>
+				<td>Main Page 전용 CSS</td>
+			</tr>
+			<tr>
+				<td>Main CSS</td>
+				<td></td>
+				<td>/css </td>
+				<td><a href="http://www.gayeon.com/css/sub.css" target="_blank">sub.css</a> </td>
+				<td>Sub Page 전용 CSS</td>
+			</tr>
+			<tr>
+				<td class="type" rowspan="6">JavaScript</td>
+				<td>jQuery</td>
+				<td></td>
+				<td>/script</td>
+				<td><a href="http://www.gayeon.com/js_new/jquery-1.8.1.js" target="_blank">jquery-1.8.1.js</a></td>
+				<td>
+					jquery-1.8.1.js
+				</td>
+			</tr>
+			<tr>
+				<td>Main JavaSciprt</td>
+				<td></td>
+				<td>/script</td>
+				<td><a href="http://www.gayeon.com/js_new/header.js" target="_blank">header.js</a></td>
+				<td>
+					공통 - gnb, 탑배너슬라이드 스크립트
+				</td>
+			</tr>
+			<tr>
+				<td>Main JavaSciprt</td>
+				<td></td>
+				<td>/script</td>
+				<td><a href="http://www.gayeon.com/js_new/quick.js" target="_blank">quick.js</a></td>
+				<td>
+					공통 - 퀵메뉴 스피드상담 스크립트
+				</td>
+			</tr>
+			<tr>
+				<td>Main JavaSciprt</td>
+				<td></td>
+				<td>/script</td>
+				<td><a href="http://www.gayeon.com/js_new/main.js" target="_blank">main.js</a></td>
+				<td>
+					메인 - 배너슬라이드 스크립트
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- CSS, JavaScript Resources List : END -->
+
+	<!-- Include Resources List : START -->
+	<h2>◆ Include Resources</h2>
+	<table class="outputList">
+		<caption >
+			<span class="hidden">Include Resources Table</span>
+		</caption>
+		<colgroup>
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="*" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">1 Depth</th>
+				<th scope="col">2 Depth</th>
+				<th scope="col">3 Depth</th>
+				<th scope="col">Directory</th>
+				<th scope="col">FileName</th>
+				<th scope="col">Memo</th>			
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>최상단</td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>top.asp</td>
+				<td>
+					DTD 선언, 기본 &lt;head&gt; 요소 내 마크업 포함 <br />
+				</td>
+			</tr>
+			<tr>
+				<td>최상단 - 스크립트</td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>common_script.asp</td>
+				<td>
+					로그인 및 지점별 사이트 스크립트
+				</td>
+			</tr>
+			<tr>
+				<td>head close</td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>close_head.asp</td>
+				<td>
+					head 닫음 태그, body 열림 태그 <br />
+					top.asp 와 close_header.asp include 구문 사이에 <br />
+					title 정의 및 추가 CSS 로드
+				</td>
+			</tr>
+			<tr>
+				<td>header</td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>header.asp</td>
+				<td>
+					skipnav <br />
+					GNB <br />
+					#wrap > #header > #container 열림 태그 포함
+				</td>
+			</tr>
+			<tr>
+				<td>서브 컨텐츠</td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>content_visu.asp</td>
+				<td>
+					서브페이지 이벤트배너 비쥬얼 <br />
+				</td>
+			</tr>
+			<tr>
+				<td>퀵메뉴</td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>quick.asp</td>
+				<td>
+					서브공통 퀵메뉴 -스피드 상담 및 오늘예약 오늘상담 레이어팝업 포함
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>quick_main.asp</td>
+				<td>
+					메인공통 퀵메뉴 - 비쥬얼 빠지면서 세로위치값 다름 
+				</td>
+			</tr>
+			<tr>
+				<td>푸터 -리마케팅 스크립트</td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>marketing.asp</td>
+				<td>
+					공통 Footer 부분
+				</td>
+			</tr>
+			<tr>
+				<td>푸터 공통</td>
+				<td></td>
+				<td></td>
+				<td>/include</td>
+				<td>footer.asp</td>
+				<td>
+					공통 Footer 부분
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- Include Resources List  : END -->
+
+	<!-- Publishing Output List : START -->
+	<h2 class="secTtl">HTML Resources</h2>
+	<table class="outputList">
+		<caption >
+			<span class="hidden">resources information list</span>
+			<span><span style="font-size:20px;">□</span> 미작업 <span style="color:#dafeb4;font-size:20px;">■</span> 작업 중 <span style="color:#ECECEC;font-size:20px;">■</span> 작업 완료</span>
+		</caption>
+		<colgroup>
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="12%" />
+			<col width="*" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">1 Depth</th>
+				<th scope="col">2 Depth</th>
+				<th scope="col">3 Depth</th>
+				<th scope="col">Directory</th>
+				<th scope="col">FileName</th>
+				<th scope="col">Memo</th>			
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="complete">
+				<td>Main Page</td>
+				<td>Main</td>
+				<td></td>
+				<td>/mian</td>
+				<td><a href="http://www.gayeon.com/main/main.asp" target="_blank">main.asp</a></td>
+				<td>
+					CrossBrowsing Test : IE8, IE9, IE10, IE11, Chrome, FF <br />
+				</td>
+			</tr>
+			<tr class="complete">
+				<td>Sub Page</td>
+				<td>가연스토리</td>
+				<td>가연소개 -개요</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story01_summary.asp" target="_blank">story01_summary.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>가연소개 -연혁</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story01_history.asp" target="_blank">story01_history.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>인사말</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story02.asp" target="_blank">story02.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>매니저소개</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story03.asp" target="_blank">story03.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>매니저소개 - view</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story03_view.asp?adminIdx=1&S_adminKind=01" target="_blank">story03_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>사옥안내/약도</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/map.asp" target="_blank">map.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>지점소개</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/branch.asp" target="_blank">branch.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴네트워크 - 공식제휴사</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story04_common.asp" target="_blank">story04_common.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴네트워크 - 공식제휴사(제휴문의)</td>
+				<td>/customer</td>
+				<td><a href="http://www.gayeon.com/customer/customer04.asp" target="_blank">customer04.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴네트워크 - 삼성그룹 고객사</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story04_samsung.asp" target="_blank">story04_samsung.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴네트워크 - 삼성그룹 고객사(제휴문의)</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story04_samsung_ask.asp" target="_blank">story04_samsung_ask.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴네트워크 - 복지플러스 고객사</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story04_plus_tab1.asp" target="_blank">sstory04_plus_tab1.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴네트워크 - 복지플러스 고객사(제휴문의)</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story04_plus_ask.asp" target="_blank">story04_plus_ask.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴네트워크 - 비앤비프로 고객사</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story04_bnbpro.asp" target="_blank">story04_bnbpro.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴네트워크 - 비앤비프로 고객사(제휴문의)</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/story/story04_bnbpro_ask.asp" target="_blank">story04_bnbpro_ask.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>가연소식</td>
+				<td>수상내역</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/gayeon/award.asp" target="_blank">award.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>가연뉴스</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/gayeon/gayeon06.asp" target="_blank">gayeon06.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>공지사항</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/gayeon/gayeon07.asp" target="_blank">gayeon07.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>공지사항 -뷰페이지</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/gayeon/gayeon07_view.asp?ModeType=&Page=1&PK=165&SearchType=&SearchTEXT=" target="_blank">gayeon07_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>광고스토리</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/gayeon/ad_tvcf.asp" target="_blank">ad_tvcf.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>광고스토리</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/gayeon/ad_history.asp" target="_blank">ad_history.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>온라인 브로슈어</td>
+				<td>/story</td>
+				<td><a href="http://www.gayeon.com/gayeon/ebook.asp" target="_blank">ebook.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>가입안내</td>
+				<td>왜가연인가</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/why.asp" target="_blank">why.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>주의사항</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/alert2.asp" target="_blank">alert2.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>서비스 절차 - 초혼</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info02.asp" target="_blank">info02.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>서비스 절차 - 재혼</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info02_second.asp" target="_blank">info02_second.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>서비스 절차 - 노블레스</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info02_noblesse.asp" target="_blank">info02_noblesse.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>서비스 종류 - 초혼</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info03_first.asp" target="_blank">info03_first.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>서비스 종류 - 재혼</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info03_second.asp" target="_blank">info03_second.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>서비스 종류 - 노블레스</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info03_noblesse.asp" target="_blank">info03_noblesse.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>상담방법</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info06.asp" target="_blank">info06.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>온라인결제</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info04.asp" target="_blank">info04.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>가연혜택 - 가연패밀리</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/gy_family.asp" target="_blank">gy_family.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>가연혜택 - 정회원 웨딩혜택</td>
+				<td>/info</td>
+				<td><a href="http://www.gayeon.com/info/info07_jung.asp" target="_blank">info07_jung.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>가연혜택 - 정회원 여행혜택</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/modetour.asp" target="_blank">modetour.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>회원검색</td>
+				<td>추천회원</td>
+				<td>/search</td>
+				<td><a href="http://www.gayeon.com/search/search01.asp" target="_blank">search01.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>추천회원 - 신청하기 </td>
+				<td>/search</td>
+				<td><a href="http://www.gayeon.com/search/search01_app.asp?idx=" target="_blank">search01_app.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>추천회원 - 상세보기 </td>
+				<td>/search</td>
+				<td><a href="http://www.gayeon.com/search/search01_detail.asp?ModeType=&Page=1&PK=263" target="_blank">search01_detail.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>미팅현황</td>
+				<td>/search</td>
+				<td><a href="http://www.gayeon.com/search/search03.asp" target="_blank">search03.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>추천요청</td>
+				<td>/search</td>
+				<td><a href="http://www.gayeon.com/search/search05.asp" target="_blank">search05.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>회원현황</td>
+				<td>/search</td>
+				<td><a href="http://www.gayeon.com/search/search04.asp" target="_blank">search04.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>회원현황 -재혼</td>
+				<td>/search</td>
+				<td><a href="http://www.gayeon.com/search/search042.asp" target="_blank">search042.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>회원현황 -노블레스</td>
+				<td>/search</td>
+				<td><a href="http://www.gayeon.com/search/search043.asp" target="_blank">search043.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>러브테스트</td>
+				<td>메인</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/main_cpa.asp" target="_blank">main_cpa.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>서브</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/sub_cpa.asp?LM=2&T_Num=0" target="_blank">sub_cpa.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>러브가이드</td>
+				<td>메인</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/main.asp" target="_blank">main.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>성혼커플 인터뷰</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community012.asp" target="_blank">community012.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>미팅 성공 전략</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community08.asp" target="_blank">community08.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>웹툰</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/webtoon_list.asp" target="_blank">webtoon_list.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>웹툰 -뷰페이지</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/webtoon_view.asp?idx=1" target="_blank">webtoon_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>매니저 칼럼</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community03" target="_blank">community03.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>매니저 칼럼 -뷰페이지</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community03_view.asp?page=1&idx=241" target="_blank">community03_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>연애 클리닉</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community04.asp" target="_blank">community04.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>연애 클리닉 - 뷰페이지</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community04_view.asp?idx=530.asp" target="_blank">community04_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>추천 데이트코스</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community02.asp" target="_blank">community02.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>추천 데이트코스 - 뷰페이지</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community02_view.asp?idx=465" target="_blank">community02_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>연애코치</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community09_list.asp" target="_blank">community09_list.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>연애코치 - 뷰페이지</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community09_view.asp?subNum=2&p_idx=702" target="_blank">community09_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>러브리서치</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community05_list.asp" target="_blank">community05_list.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>러브리서치 - 뷰페이지</td>
+				<td>/community</td>
+				<td><a href="http://www.gayeon.com/community/community05.asp?idx=131" target="_blank">community05.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>이벤트</td>
+				<td>전체미팅파티</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/all_meeting.asp" target="_blank">all_meeting.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>전체미팅파티 - 뷰페이지</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/meeting_view.asp?PK=870" target="_blank">meeting_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>기업제휴 미팅파티</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/business_meeting.asp" target="_blank">business_meeting.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>기업제휴 미팅파티 - 뷰페이지</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/meeting_view.asp" target="_blank">meeting_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>미팅갤러리</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/gallery.asp" target="_blank">gallery.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>미팅갤러리 -뷰페이지</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/gallery_view.asp?page=1&PK=148" target="_blank">gallery_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>공연문화 이벤트</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/culture.asp" target="_blank">culture.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>공연문화 이벤트 - 뷰페이지</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/culture_view.asp?page=1&PK=869" target="_blank">culture_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>당첨자 발표</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/win.asp" target="_blank">win.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>당첨자 발표 -뷰페이지</td>
+				<td>/ha_event</td>
+				<td><a href="http://www.gayeon.com/ha_event/win_view.asp" target="_blank">win_view.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>마이가연</td>
+				<td>메인</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/main.asp" target="_blank">main.asp</a></td>
+				<td>새로 코딩</td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>추천회원목록</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage02_new.asp" target="_blank">mypage02_new.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>추천회원목록 -뷰페이지</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage02_new2.asp?idx=2361782" target="_blank">mypage02_new2.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>나의 미팅현황 - 목록</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage03.asp" target="_blank">mypage03.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>나의 미팅현황 - 후기작성</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage03_write.asp" target="_blank">mypage03_write.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>담당매니저 상담</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage05.asp" target="_blank">mypage05.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>내 상담/결제내역</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage07.asp" target="_blank">mypage07.asp</a></td>
+				<td></td>
+			</tr>
+
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>문자수신내역</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage04.asp" target="_blank">mypage04.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>정보 변경신고 -커플/결혼신고</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage08.asp" target="_blank">mypage08.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>정보 변경신고 - 인증정보 변경신고</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage09.asp" target="_blank">mypage09.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>회원정보관리</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/mypage01.asp" target="_blank">mypage01.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>정회원 가입서</td>
+				<td>/jungin_new</td>
+				<td><a href="http://www.gayeon.com/jungin_new/jungin_step02.asp" target="_blank">jungin_step02.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>안심번호</td>
+				<td>/mypage</td>
+				<td><a href="http://www.gayeon.com/mypage/safenumb_service.asp" target="_blank">safenumb_service.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>회사소개</td>
+				<td>경영이념</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/ideology.asp" target="_blank">ideology.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>회사연혁</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/history.asp" target="_blank">history.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>브랜드/CI</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/brand.asp" target="_blank">brand.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>CEO 인사말</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/ceo.asp" target="_blank">ceo.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>조직도/연락처</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/org.asp" target="_blank">org.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>지점소개</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/branch.asp" target="_blank">branch.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>사옥안내/약도</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/map.asp?maptype=2" target="_blank">map.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>인재정보</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/info.asp" target="_blank">info.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>인재정보 -매칭</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/info_mat.asp" target="_blank">info_mat.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>인재정보 전략경영</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/info_busin.asp" target="_blank">info_busin.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>채용정보</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/recruit.asp" target="_blank">recruit.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>입사지원</td>
+				<td>/company</td>
+				<td><a href="http://www.gayeon.com/company/recruit_write.asp?adKind=01" target="_blank">recruit_write.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>이용약관</td>
+				<td>/footer</td>
+				<td><a href="http://www.gayeon.com/footer/gy12_agreement.asp" target="_blank">gy12_agreement.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>개인정보취급</td>
+				<td>/footer</td>
+				<td><a href="http://www.gayeon.com/footer/gy12_individual.asp" target="_blank">gy12_individual.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>사이트맵</td>
+				<td>/sitemap</td>
+				<td><a href="http://www.gayeon.com/sitemap/sitemap.asp" target="_blank">sitemap.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>멤버쉽</td>
+				<td>로그인</td>
+				<td>/membership</td>
+				<td><a href="http://www.gayeon.com/membership/login.asp" target="_blank">login.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>회원가입</td>
+				<td>/membership</td>
+				<td><a href="http://www.gayeon.com/membership/joinus_fresh.asp" target="_blank">joinus_fresh.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>아이디 비번 찾기</td>
+				<td>/membership</td>
+				<td><a href="http://www.gayeon.com/membership/idpw.asp" target="_blank">idpw.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>고객센터</td>
+				<td>자주 묻는 질문</td>
+				<td>/customer</td>
+				<td><a href="http://www.gayeon.com/customer/customer01.asp" target="_blank">customer01.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>고객만족센터</td>
+				<td>/customer</td>
+				<td><a href="http://www.gayeon.com/customer/customer08_write.asp" target="_blank">customer08_write.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>제휴문의</td>
+				<td>/customer</td>
+				<td><a href="http://www.gayeon.com/customer/customer04.asp" target="_blank">customer04.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>문화이벤트 제휴문의</td>
+				<td>/customer</td>
+				<td><a href="http://www.gayeon.com/customer/customer06.asp" target="_blank">customer06.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>언론보도문의</td>
+				<td>/customer</td>
+				<td><a href="http://www.gayeon.com/customer/customer07.asp" target="_blank">customer07.asp</a></td>
+				<td></td>
+			</tr>
+				<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>회원탈퇴신청</td>
+				<td>/customer</td>
+				<td><a href="http://www.gayeon.com/customer/customer10.asp" target="_blank">customer10.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>미팅파티 상세페이지</td>
+				<td>삼성 경품</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/samsung_gift_201508.asp" target="_blank">samsung_gift_201508.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>삼성 회원용</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/samsung_mt_201508.asp" target="_blank">samsung_mt_201508.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>삼성 임직원</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/samsung_ss_201508.asp" target="_blank">samsung_ss_201508.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>한국교원</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/tch_mt_201509.asp" target="_blank">tch_mt_201509.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>한국교원</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/tch_mt_201509.asp" target="_blank">tch_mt_201509.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>대한 전공의</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/youngmd_mt_201508.asp" target="_blank">youngmd_mt_201508.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>카카오</td>
+				<td>/guide</td>
+				<td><a href="http://www.gayeon.com/guide/kakao_mt_201509.asp" target="_blank">kakao_mt_201509.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>제휴사이트</td>
+				<td>대명라이프웨이</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_dm.asp" target="_blank">partner_dm.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>ezwel</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_ezwel.asp" target="_blank">partner_ezwel.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>주택금융공사</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_hf.asp" target="_blank">partner_hf.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>대한공중보건치과의사협회</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_kapd.asp" target="_blank">partner_kapd.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>한국지역난방공사</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_kdhc.asp" target="_blank">partner_kdhc.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>대한주택보증</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_khgc.asp" target="_blank">partner_khgc.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>한국거래소</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_krx.asp" target="_blank">partner_krx.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>한국예탁결제원</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_ksd.asp" target="_blank">partner_ksd.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>교원</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_kyowon.asp" target="_blank">partner_kyowon.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>LG전자</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_lge.asp" target="_blank">partner_lge.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>농심</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_nongshim.asp" target="_blank">partner_nongshim.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td> p&amp g</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_png.asp" target="_blank">partner_png.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td> 임직원 복지 제휴프로모션 -남자</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_request.asp" target="_blank">partner_request.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td> 공무원 연금공단 제휴프로모션 -남자</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_request2.asp" target="_blank">partner_request2.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td> 임직원 복지 제휴프로모션 -여자</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_request_w.asp" target="_blank">partner_request_w.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>공무원 연금공단 제휴프로모션 -여자</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_request_w2.asp" target="_blank">partner_request_w2.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>삼성</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_samsung.asp" target="_blank">partner_samsung.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>신사의 품격이벤트</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_shinsaevent.asp" target="_blank">partner_shinsaevent.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>신사의 품격이벤트</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_shinsaevent.asp" target="_blank">partner_shinsaevent.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>한국교총</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_tch.asp" target="_blank">partner_tch.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>대한전공의협의회</td>
+				<td>/partner</td>
+				<td><a href="http://www.gayeon.com/partner/partner_youngmd.asp" target="_blank">partner_youngmd.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td>랜딩페이지</td>
+				<td>결혼가능점수</td>
+				<td>/landing</td>
+				<td><a href="http://www.gayeon.com/landing/score_test1.asp" target="_blank">score_test1.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>결혼가능점수 - 완료페이지</td>
+				<td>/landing</td>
+				<td><a href="http://www.gayeon.com/landing/score_test2.asp?Etc_Info_01=M|0|15|15|12|11|14|11|12|1||||&UserName=%C5%D7%BD%BA%C6%AE&POPUP=&userid=muzel2" target="_blank">score_test2.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>결혼가능점수2</td>
+				<td>/landing</td>
+				<td><a href="http://www.gayeon.com/landing/lvt_score1_x.asp" target="_blank">lvt_score1_x.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>결혼가능점수2 - 완료페이지</td>
+				<td>/landing</td>
+				<td><a href="http://www.gayeon.com/landing/lvt_score_finish.asp?Etc_Info_01=M|0|15|8|10|12|15|13|12|1||||&UserName=%C5%D7%BD%BA%C6%AE&POPUP=&userid=@0921164033211364" target="_blank">lvt_score_finish.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>결혼나이 테스트</td>
+				<td>/landing</td>
+				<td><a href="http://www.gayeon.com/landing/wd_age_test1.asp" target="_blank">wd_age_test1.asp</a></td>
+				<td></td>
+			</tr>
+			<tr class="complete">
+				<td></td>
+				<td></td>
+				<td>결혼나이 테스트 -완료페이지</td>
+				<td>/landing</td>
+				<td><a href="http://www.gayeon.com/landing/wd_age_test2.asp?Etc_Info_01=0|2|1|2|2|2|2|2|&UserName=%C5%D7%BD%BA%C6%AE&POPUP=" target="_blank">wd_age_test2.asp</a></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	<!-- Publishing Output List : END -->
+
+</body>
+</html>
