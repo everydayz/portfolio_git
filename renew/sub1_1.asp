@@ -1,13 +1,4 @@
-<%@ Language = "VBScript" CodePage = 65001 %>
-<%
-	Response.CharSet = "UTF-8"
-%>
-<!--#include file="visit.asp"-->
 
-<%
-pageNum =1
-subNum =1
-%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
@@ -58,6 +49,7 @@ $("ul#topnav li").hover(function() {
 			<ul>
 				<li><a href="sub1_1.asp">사업개요<span class="arr"></span></a></li>
 				<li><a href="sub1_2.asp">브랜드소개<span class="arr"></span></a></li>
+				<li><a href="sub1_3.asp">찾아오시는길<span class="arr"></span></a></li>
 				<li><a href="sub1_3.asp">찾아오시는길<span class="arr"></span></a></li>
 			</ul>
 		</div>
